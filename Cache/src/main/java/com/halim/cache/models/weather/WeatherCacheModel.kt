@@ -12,8 +12,10 @@ import java.io.ByteArrayOutputStream
 
 @Entity
 data class WeatherCacheModel(
-    val list: List<WeatherDetailsCacheModel>?,
-):CacheModel {
-    @PrimaryKey
+    val temperature:Double?,
+    val date:String?,
+    @PrimaryKey(autoGenerate = true)
     val id: Int? =null
+):CacheModel {
+
 }

@@ -5,7 +5,7 @@ import com.halim.data.models.weather.WeatherDetailsEntityModel
 import com.halim.domain.models.weather.WeatherDetails
 import javax.inject.Inject
 
-class WeatherDetailsMapper (
+class WeatherDetailsEntityMapper @Inject constructor(
     private val mainEntityMapper: MainEntityMapper
 ):EntityMapper<WeatherDetailsEntityModel,WeatherDetails> {
 

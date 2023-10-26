@@ -5,7 +5,7 @@ import com.halim.cache.models.weather.WeatherDetailsCacheModel
 import com.halim.data.models.weather.WeatherDetailsEntityModel
 import javax.inject.Inject
 
-class WeatherDetailsCacheMapper (
+class WeatherDetailsCacheMapper @Inject constructor (
     private val mainCacheMapper: MainCacheMapper
 ) :CacheMapper<WeatherDetailsCacheModel,WeatherDetailsEntityModel>{
     override fun mapFromCached(type: WeatherDetailsCacheModel?): WeatherDetailsEntityModel {

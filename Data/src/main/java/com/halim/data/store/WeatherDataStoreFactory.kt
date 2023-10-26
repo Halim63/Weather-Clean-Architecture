@@ -3,24 +3,22 @@ package com.halim.data.store
 import com.halim.data.repository.weather.WeatherDataStore
 import javax.inject.Inject
 
-class WeatherDataStoreFactory (
-    private val weatherCacheDataStore: WeatherCacheDataStore,
-    private val weatherRemoteDataStore: WeatherRemoteDataStore
+class WeatherDataStoreFactory @Inject constructor(
+    private val weatherCacheDataStoreImpl: WeatherCacheDataStoreImpl,
+    private val weatherRemoteDataStoreImpl: WeatherRemoteDataStoreImpl
 ) {
     fun getDataStore(
         weatherCached: Boolean,
         cacheExpired: Boolean
     ): WeatherDataStore {
         return if (weatherCached && !cacheExpired) {
-            weatherCacheDataStore
+            weatherCacheDataStoreImpl
         } else {
-            weatherRemoteDataStore
+            weatherRemoteDataStoreImpl
         }
     }
+    fun getWeatherCacheDataStore(): WeatherDataStore = weatherCacheDataStoreImpl
 
-    fun getWeatherCacheDataStore(): WeatherDataStore = weatherCacheDataStore
-
-    fun getWeatherRemoteDataStore(): WeatherDataStore = weatherRemoteDataStore
 
 
 }

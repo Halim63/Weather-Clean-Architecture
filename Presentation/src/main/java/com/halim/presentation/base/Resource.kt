@@ -1,32 +1,23 @@
 package com.halim.presentation.base
 
-data class Resource<out T> constructor(
-    val state: ResourceState,
-    val values: T? = null,
-    val throwable: Throwable? = null
+class Resource<T> private constructor(
+    val state: State,
+    val result: T? = null,
+    val errorMessage: String? = null,
 ) {
-
     companion object {
-        fun <T> success(t: T): Resource<T> {
-            return Resource<T>(
-                values = t,
-                state = ResourceState.SUCCESS
-            )
-        }
+        fun <T> success(result: T): Resource<T> = Resource(
+            state = State.SUCCESS, result = result
+        )
 
-        fun <T> error(throwable: Throwable? = null): Resource<T> {
-            return Resource<T>(
-                state = ResourceState.ERROR,
-                throwable = throwable
-            )
-        }
+        fun <T> error(message: String?): Resource<T> = Resource(
+            state = State.ERROR, errorMessage = message
+        )
 
-        fun <T> loading(): Resource<T> {
-            return Resource<T>(
-                state = ResourceState.LOADING
-            )
-        }
+        fun <T> loading(): Resource<T> = Resource(state = State.LOADING)
     }
+}
 
-
+enum class State {
+    LOADING, SUCCESS, ERROR,
 }

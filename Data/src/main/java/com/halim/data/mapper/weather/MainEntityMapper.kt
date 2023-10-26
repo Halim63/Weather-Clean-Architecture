@@ -3,8 +3,11 @@ package com.halim.data.mapper.weather
 import com.halim.data.mapper.EntityMapper
 import com.halim.data.models.weather.MainEntityModel
 import com.halim.domain.models.weather.Main
+import javax.inject.Inject
 
-class MainEntityMapper : EntityMapper<MainEntityModel, Main> {
+class MainEntityMapper @Inject constructor(
+
+) : EntityMapper<MainEntityModel, Main> {
 
 
     override fun mapFromEntity(entity: MainEntityModel?): Main {

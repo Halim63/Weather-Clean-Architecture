@@ -2,26 +2,24 @@ package com.halim.cache.mapper.weather
 
 import com.halim.cache.mapper.CacheMapper
 import com.halim.cache.models.weather.WeatherCacheModel
-import com.halim.data.models.weather.WeatherEntityModel
+import com.halim.data.models.weather.MainEntityModel
+import com.halim.data.models.weather.WeatherDetailsEntityModel
 import javax.inject.Inject
 
-class WeatherCacheMapper (
-    private val weatherDetailsCacheMapper: WeatherDetailsCacheMapper
-) : CacheMapper<WeatherCacheModel, WeatherEntityModel> {
-    override fun mapFromCached(type: WeatherCacheModel?): WeatherEntityModel {
-        return WeatherEntityModel(
-          list = type?.list?.map {
-              weatherDetailsCacheModel -> weatherDetailsCacheMapper.mapFromCached(weatherDetailsCacheModel)
-          }
+class WeatherCacheMapper @Inject constructor(
+) : CacheMapper<WeatherCacheModel, WeatherDetailsEntityModel> {
+    override fun mapFromCached(model: WeatherCacheModel?): WeatherDetailsEntityModel {
+        return WeatherDetailsEntityModel(
+            dtTxt = model?.date,
+            mainEntity = MainEntityModel(model?.temperature)
         )
     }
 
-    override fun mapToCached(type: WeatherEntityModel?): WeatherCacheModel {
+    override fun mapToCached(entity: WeatherDetailsEntityModel?): WeatherCacheModel {
         return WeatherCacheModel(
-            list = type?.list?.map {
-                weatherDetailsEntityModel ->
-                weatherDetailsCacheMapper.mapToCached(weatherDetailsEntityModel)
-            }
+            temperature = entity?.mainEntity?.temp,
+            date = entity?.dtTxt
+
         )
     }
 

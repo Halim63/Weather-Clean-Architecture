@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
-        android:id="@+id/temprture"
+        android:id="@+id/tvTemprture"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Temprture"
@@ -17,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/date"
+        android:id="@+id/tvDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="12/12/2023"
@@ -26,6 +27,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/temprture" />
+        app:layout_constraintTop_toBottomOf="@+id/tvTemprture" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

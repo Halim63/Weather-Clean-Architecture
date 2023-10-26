@@ -52,9 +52,7 @@ dependencies {
     implementation 'com.squareup.retrofit2:adapter-rxjava3:2.9.0'
 
 
-    implementation 'org.koin:koin-androidx-viewmodel:2.0.1'
-    implementation 'org.koin:koin-androidx-scope:2.0.1'
-    implementation "io.insert-koin:koin-core:3.1.2"
+
 
     implementation project(':Domain')
 

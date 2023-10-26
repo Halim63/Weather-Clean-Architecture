@@ -12,7 +12,8 @@ import io.reactivex.rxjava3.core.Observable
 @Dao
 interface WeatherDao {
     @Query("SELECT * FROM weathercachemodel")
-    fun getWeather(): Observable<List<WeatherCacheModel>>
+
+    fun getAllWeather(): Observable<List<WeatherCacheModel>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insert(weatherCacheEntity: WeatherCacheModel): Completable
